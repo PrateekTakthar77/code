@@ -1,9 +1,9 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, USER_LIST, SET_ACTIVE_ITEM } from './constants';
 
-export function addToCart(item) {
+export function addToCart(data) {
     return {
         type: ADD_TO_CART,
-        data: item
+        data
     }
 }
 export function removeFromCart(item) {

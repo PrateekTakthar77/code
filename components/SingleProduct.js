@@ -1,12 +1,18 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from './redux/action';
 
 const SingleProduct = ({ navigation }) => {
-    const handlePress = () => {
+    const dispatch = useDispatch();
+    const { activeItem } = useSelector((state) => state.reducer);
+    console.log(activeItem);
+
+    const handlePress = (activeItem) => {
+        dispatch(addToCart(activeItem));
         navigation.navigate('cart');
     };
-    const store = useSelector((state) => state.reducer);
-    console.log(store.activeItem);
+
     return (
         <View>
             <ScrollView>
@@ -42,7 +48,7 @@ const SingleProduct = ({ navigation }) => {
                     </TouchableOpacity>
                     <Text style={{ color: '#ecc440' }}>4.5</Text>
                 </View>
-                <TouchableOpacity onPress={handlePress}>
+                <TouchableOpacity onPress={() => handlePress(activeItem)}>
                     <View style={styles.loginbutton}>
                         <Text style={styles.logintext}>ADD TO CART</Text>
                     </View>

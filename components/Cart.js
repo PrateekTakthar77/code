@@ -1,25 +1,15 @@
 import { View, Text, Image, TouchableOpacity, TextInput, Button, ScrollView, StyleSheet, Modal } from "react-native";
-import React, { useState, useEffect }  from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Cart = () => {
   const [showModal, setShowModal] = useState(false);
-  const hello = () => {
-    console.warn("hello Tester");
-  }
-  const [data, setData] = useState(undefined);
-  const getAPIDATA = async () => {
-    const url = "https://jwell-bliss-test-dev.cyclic.app/api/products/648c180a5d576870965c4d00";
-    let result = await fetch(url);
-    result = await result.json();
-    setData(result)
-  }
-  useEffect(() => {
-    getAPIDATA();
-  }, [])
+  const { cart } = useSelector((state) => state.reducer);
+  console.log(cart);
 
   const Navigator = () => {
     setShowModal(true);
   }
+
   return (
     <View>
       <ScrollView>
