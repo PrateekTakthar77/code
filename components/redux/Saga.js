@@ -1,6 +1,5 @@
 import { takeEvery, put, all } from 'redux-saga/effects'
 import { SET_USER_DATA, USER_LIST } from './constants';
-import UserList from '../UserList';
 
 function* userList() {
     const url = "https://jwell-bliss-test-dev.cyclic.app/api/products/"

@@ -5,6 +5,8 @@ const SingleProduct = ({ navigation }) => {
     const handlePress = () => {
         navigation.navigate('cart');
     };
+    const store = useSelector((state) => state.reducer);
+    console.log(store.activeItem);
     return (
         <View>
             <ScrollView>

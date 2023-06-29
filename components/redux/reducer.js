@@ -1,7 +1,8 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SET_USER_DATA } from "./constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SET_USER_DATA, SET_ACTIVE_ITEM } from "./constants";
 const initialState = {
     cart: [],
-    users: []
+    users: [],
+    activeItem: null
 };
 
 export const reducer = (state = initialState, action) => {
@@ -23,6 +24,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: [...result.cart]
+            }
+        case SET_ACTIVE_ITEM:
+            return {
+                ...state,
+                activeItem: action.data
             }
         default:
             return state
