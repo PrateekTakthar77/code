@@ -17,7 +17,7 @@ const Cart = () => {
         <View style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 30 }}>
           <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
           <View style={{ flexDirection: 'column' }}>
-            <Text style={{ color: 'black', marginLeft: 7 }}>{data ? <Text>{data.name}</Text> : null}</Text>
+            {/* <Text style={{ color: 'black', marginLeft: 7 }}>{data ? <Text>{data.name}</Text> : null}</Text> */}
             {/* <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}>{data ? <Text>{data.mrp}.00</Text> : null}</Text> */}
             <View style={{ flexDirection: 'row', width: 30, marginLeft: 5 }}>
               <View style={{ flexDirection: 'row', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
@@ -59,7 +59,7 @@ const Cart = () => {
             <Text style={{ fontWeight: 'bold', color: 'black', borderBottomWidth: 1, marginBottom: 10, padding: 5 }}>Grand Total <Text>                                  28870.00</Text></Text>
           </View>
           <View style={{ flexDirection: "row", justifyContent: 'center' }}>
-            <TextInput placeholder="Enter Discount Coupon " style={{ backgroundColor: 'black', padding: 10, borderBottomLeftRadius: 7, borderTopLeftRadius: 7, width: "80%", color: 'white' }} placeholderTextColor={'#eec06b'} /><TouchableOpacity onPress={hello}><Text style={{ padding: 15, borderBottomRightRadius: 7, backgroundColor: '#eec06b', borderTopRightRadius: 7, fontWeight: '700', color: 'black' }}>Apply</Text></TouchableOpacity>
+            <TextInput placeholder="Enter Discount Coupon " style={{ backgroundColor: 'black', padding: 10, borderBottomLeftRadius: 7, borderTopLeftRadius: 7, width: "80%", color: 'white' }} placeholderTextColor={'#eec06b'} /><TouchableOpacity ><Text style={{ padding: 15, borderBottomRightRadius: 7, backgroundColor: '#eec06b', borderTopRightRadius: 7, fontWeight: '700', color: 'black' }}>Apply</Text></TouchableOpacity>
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 30 }}>
             <TouchableOpacity onPress={Navigator}><Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginRight: 5, fontWeight: '700', color: 'black', width: '100%' }}>CONTINUE SHOPPING</Text></TouchableOpacity>
