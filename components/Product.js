@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Product = ({ navigation }) => {
   const handlePress = () => {
@@ -17,7 +16,7 @@ const Product = ({ navigation }) => {
   }
   useEffect(() => {
     getAPIDATA();
-  }, [])
+  }, []);
   const handleAddToCart = (item) => {
     dispatch(addToCart(item))
     // console.log(item)
