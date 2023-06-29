@@ -18,7 +18,7 @@ const Cart = () => {
           <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
           <View style={{ flexDirection: 'column' }}>
             <Text style={{ color: 'black', marginLeft: 7 }}>{data ? <Text>{data.name}</Text> : null}</Text>
-            <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}>{data ? <Text>{data.mrp}.00</Text> : null}</Text>
+            {/* <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}>{data ? <Text>{data.mrp}.00</Text> : null}</Text> */}
             <View style={{ flexDirection: 'row', width: 30, marginLeft: 5 }}>
               <View style={{ flexDirection: 'row', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
                 <TouchableOpacity style={{ marginRight: 5 }}><Text style={{ color: 'white' }}>+</Text></TouchableOpacity>
