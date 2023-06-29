@@ -1,5 +1,6 @@
 import { View, Text, Image, TouchableOpacity, TextInput, Button, ScrollView, StyleSheet, Modal } from "react-native";
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Cart = () => {
   const [showModal, setShowModal] = useState(false);
