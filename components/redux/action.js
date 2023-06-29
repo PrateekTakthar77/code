@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, USER_LIST } from './constants';
+import { ADD_TO_CART, REMOVE_FROM_CART, USER_LIST, SET_ACTIVE_ITEM } from './constants';
 
 export function addToCart(item) {
     return {
