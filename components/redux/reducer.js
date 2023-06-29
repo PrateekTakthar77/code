@@ -9,7 +9,7 @@ export const reducer = (state = initialState, action) => {
         case ADD_TO_CART:
             return {
                 ...state,
-                cart: [...state.cart,action.data],
+                cart: [...state.cart, action.data],
             }
         case REMOVE_FROM_CART:
             let result = state.cart.filter(item => {
@@ -17,12 +17,12 @@ export const reducer = (state = initialState, action) => {
             })
             return {
                 ...state,
-                cart:result
+                cart: result
             }
         case SET_USER_DATA:
             return {
                 ...state,
-                users:[...result.cart]
+                users: [...result.cart]
             }
         default:
             return state

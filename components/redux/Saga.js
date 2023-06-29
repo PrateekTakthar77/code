@@ -1,16 +1,19 @@
-import {takeEvery, put} from 'redux-saga/effects'
+import { takeEvery, put, all } from 'redux-saga/effects'
 import { SET_USER_DATA, USER_LIST } from './constants';
 import UserList from '../UserList';
 
-function* userList(){
+function* userList() {
     const url = "https://jwell-bliss-test-dev.cyclic.app/api/products/"
     let data = yield fetch(url);
     data = yield data.json();
-    yield put({type:SET_USER_DATA,data})
+    yield put({ type: SET_USER_DATA, data })
     // console.log(`saga function called`,data);
 }
 
-function* SagaData(){
-    yield takeEvery(USER_LIST,userList)
+export function* watchFetchUser() {
+    yield takeEvery(USER_LIST, userList)
 }
-export default SagaData;
+
+export default function* rootSaga() {
+    yield all([watchFetchUser])
+}
