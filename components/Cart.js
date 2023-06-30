@@ -3,11 +3,29 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from './redux/action';
 
+const useGetCartTotal = (cartItems) => {
+  const total = 0;
+  const grandTotal = 0;
+
+  cartItems.forEach((item) => {
+    total += parseInt(item.price);
+  });
+
+  const tax = 1.5;
+  const discount = 1000;
+
+  grandTotal = parseInt(total) + (tax * total) * 2 - discount;
+
+  return {
+    total,
+    grandTotal
+  }
+}
+
 const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const { cart } = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
-  console.log(cart);
 
   const Navigator = () => {
     setShowModal(true);
@@ -20,6 +38,8 @@ const Cart = () => {
   const decreaseCount = (item) => {
     dispatch(removeFromCart(item));
   }
+
+  const { total, grandTotal } = useGetCartTotal(cart);
 
   return (
     <View>
@@ -44,7 +64,7 @@ const Cart = () => {
         }
         <View style={{ flexDirection: 'column', margin: 50 }}>
           <View style={{ marginBottom: 10 }}>
-            <Text>Item Total                                         29000.00</Text>
+            <Text>Item Total                                         {total}</Text>
           </View>
           <View style={{ marginBottom: 10 }}>
             <Text >CGST(1.5%) <Text>                                         435.00</Text></Text>
@@ -56,7 +76,7 @@ const Cart = () => {
             <Text>Discount <Text>                                            1000.00</Text></Text>
           </View>
           <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontWeight: 'bold', color: 'black', borderBottomWidth: 1, marginBottom: 10, padding: 5 }}>Grand Total <Text>                                  28870.00</Text></Text>
+            <Text style={{ fontWeight: 'bold', color: 'black', borderBottomWidth: 1, marginBottom: 10, padding: 5 }}>Grand Total <Text>                                  {grandTotal}</Text></Text>
           </View>
           <View style={{ flexDirection: "row", justifyContent: 'center' }}>
             <TextInput placeholder="Enter Discount Coupon " style={{ backgroundColor: 'black', padding: 10, borderBottomLeftRadius: 7, borderTopLeftRadius: 7, width: "80%", color: 'white' }} placeholderTextColor={'#eec06b'} /><TouchableOpacity ><Text style={{ padding: 15, borderBottomRightRadius: 7, backgroundColor: '#eec06b', borderTopRightRadius: 7, fontWeight: '700', color: 'black' }}>Apply</Text></TouchableOpacity>
