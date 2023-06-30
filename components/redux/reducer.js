@@ -6,7 +6,6 @@ const initialState = {
     activeItem: null
 };
 
-//TODO: Refactor this reducer.
 export const reducer = (state = initialState, action = {}) => {
     const { cart } = state;
     const { data } = action;
@@ -14,54 +13,67 @@ export const reducer = (state = initialState, action = {}) => {
 
     switch (action.type) {
         case ADD_TO_CART:
-
             if (index > -1) {
-                const cartItem = cart[index];
-                cartItem.count++;
+                const updatedCart = cart.map((cartItem, i) => {
+                    if (i === index) {
+                        return {
+                            ...cartItem,
+                            count: cartItem.count + 1
+                        };
+                    }
+                    return cartItem;
+                });
 
                 return {
                     ...state,
-                    cart: [...cart],
-                }
+                    cart: updatedCart,
+                };
             }
-
-            cart.push({
-                id: data._id,
-                item: data,
-                count: 1
-            });
 
             return {
                 ...state,
-                cart: [...cart],
-            }
+                cart: [
+                    ...cart,
+                    {
+                        id: data._id,
+                        item: data,
+                        count: 1
+                    }
+                ],
+            };
         case REMOVE_FROM_CART:
             if (index === -1) {
                 return state;
             }
 
-            const cartItem = cart[index];
-            if (cartItem.count - 1 <= 0) {
-                cart.splice(index, 1)
-            } else {
-                cartItem.count--;
-            }
+            const updatedCart = cart.map((cartItem, i) => {
+                if (i === index) {
+                    if (cartItem.count - 1 <= 0) {
+                        return null;
+                    }
+                    return {
+                        ...cartItem,
+                        count: cartItem.count - 1
+                    };
+                }
+                return cartItem;
+            }).filter(Boolean);
 
             return {
                 ...state,
-                cart: [...cart]
-            }
+                cart: updatedCart
+            };
         case SET_USER_DATA:
             return {
                 ...state,
-                users: [...result.cart]
-            }
+                users: [...state.cart]
+            };
         case SET_ACTIVE_ITEM:
             return {
                 ...state,
                 activeItem: action.data
-            }
+            };
         default:
-            return state
+            return state;
     }
-}
+};

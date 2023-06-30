@@ -24,13 +24,13 @@ const Cart = () => {
   return (
     <View>
       <ScrollView>
-        <View style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 30 }}>
-          <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
-          {
-            cart.length ? cart.map(cartItem => (
+        {
+          cart.length ? cart.map(cartItem => (
+            <View style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 30 }}>
               <View style={{ flexDirection: 'column' }}>
-                {/* <Text style={{ color: 'black', marginLeft: 7 }}>{item ? <Text>{item.name}</Text> : null}</Text> */}
-                {/* <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}>{item ? <Text>{item.mrp}.00</Text> : null}</Text> */}
+                <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
+                <Text style={{ color: 'black', marginLeft: 7 }}></Text>
+                <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}></Text>
                 <View style={{ flexDirection: 'row', width: 30, marginLeft: 5 }}>
                   <View style={{ flexDirection: 'row', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
                     <TouchableOpacity style={{ marginRight: 5 }} onPress={() => increaseCount(cartItem)}><Text style={{ color: 'white' }}>+</Text></TouchableOpacity>
@@ -39,23 +39,9 @@ const Cart = () => {
                   </View>
                 </View>
               </View>
-            )) : <></>
-          }
-        </View>
-        {/* <View style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 15 }}>
-          <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
-          <View style={{ flexDirection: 'column' }}>
-            <Text style={{ color: 'black', marginLeft: 7 }}>{data ? <Text>{data.name}</Text> : null}</Text>
-            <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}>{data ? <Text>{data.mrp}.00</Text> : null}</Text>
-            <View style={{ flexDirection: 'row', width: 30, marginLeft: 5 }}>
-              <View style={{ flexDirection: 'row', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
-                <TouchableOpacity style={{ marginRight: 5 }}><Text style={{ color: 'white' }}>+</Text></TouchableOpacity>
-                <Text style={{ color: 'white' }}>5</Text>
-                <TouchableOpacity style={{ marginLeft: 5 }}><Text style={{ color: 'white' }}>-</Text></TouchableOpacity>
-              </View>
             </View>
-          </View>
-        </View> */}
+          )) : <></>
+        }
         <View style={{ flexDirection: 'column', margin: 50 }}>
           <View style={{ marginBottom: 10 }}>
             <Text>Item Total                                         29000.00</Text>
