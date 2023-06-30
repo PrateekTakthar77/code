@@ -45,19 +45,19 @@ const Product = ({ navigation }) => {
 
   return (
     <View>
+      <ScrollView>
       {
         data.length ?
           data.map((item, index) =>
-            <ScrollView key={index}>
-              <View style={{ margin: 30, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+              <View key={index}  style={{ margin: 30, flexDirection: 'row', justifyContent: 'space-evenly' }}>
                 <TouchableOpacity onPress={() => handlePress(item)} style={{ backgroundColor: 'black', borderRadius: 20, justifyContent: 'space-evenly', marginRight: 20 }}>
                   <Image style={{ height: 200, width: 150, }} source={require('../images/Logo.png')} />
                   <Text style={{ marginBottom: .5, width: 150, color: 'white', backgroundColor: '#ECC440', borderRadius: 20, textAlign: 'center', }}>{item?.name}</Text>
                 </TouchableOpacity>
               </View>
-            </ScrollView>
           ) : null
       }
+      </ScrollView>
     </View >
   )
 }
