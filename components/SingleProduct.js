@@ -6,7 +6,6 @@ import { addToCart } from './redux/action';
 const SingleProduct = ({ navigation }) => {
     const dispatch = useDispatch();
     const { activeItem } = useSelector((state) => state.reducer);
-    console.log(activeItem);
 
     const handlePress = (activeItem) => {
         dispatch(addToCart(activeItem));
@@ -62,7 +61,7 @@ const SingleProduct = ({ navigation }) => {
     )
 }
 
-export default SingleProduct
+export default SingleProduct;
 
 const styles = StyleSheet.create({
     loginbutton: {
@@ -81,4 +80,4 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "black",
     },
-})
+});

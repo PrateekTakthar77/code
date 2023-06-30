@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { setActiveItem } from './redux/action';
 
+// TODO: GET THE PRODUCTS FROM STORE
 const Product = ({ navigation }) => {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();

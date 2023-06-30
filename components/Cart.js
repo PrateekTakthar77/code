@@ -1,14 +1,24 @@
 import { View, Text, Image, TouchableOpacity, TextInput, Button, ScrollView, StyleSheet, Modal } from "react-native";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from './redux/action';
 
 const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const { cart } = useSelector((state) => state.reducer);
+  const dispatch = useDispatch();
   console.log(cart);
 
   const Navigator = () => {
     setShowModal(true);
+  }
+
+  const increaseCount = (item) => {
+    dispatch(addToCart(item));
+  }
+
+  const decreaseCount = (item) => {
+    dispatch(removeFromCart(item));
   }
 
   return (
@@ -17,15 +27,15 @@ const Cart = () => {
         <View style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 30 }}>
           <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
           {
-            cart.length ? cart.map(item => (
+            cart.length ? cart.map(cartItem => (
               <View style={{ flexDirection: 'column' }}>
                 {/* <Text style={{ color: 'black', marginLeft: 7 }}>{item ? <Text>{item.name}</Text> : null}</Text> */}
                 {/* <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}>{item ? <Text>{item.mrp}.00</Text> : null}</Text> */}
                 <View style={{ flexDirection: 'row', width: 30, marginLeft: 5 }}>
                   <View style={{ flexDirection: 'row', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
-                    <TouchableOpacity style={{ marginRight: 5 }}><Text style={{ color: 'white' }}>+</Text></TouchableOpacity>
+                    <TouchableOpacity style={{ marginRight: 5 }} onPress={() => increaseCount(cartItem)}><Text style={{ color: 'white' }}>+</Text></TouchableOpacity>
                     <Text style={{ color: 'white' }}>5</Text>
-                    <TouchableOpacity style={{ marginLeft: 5 }}><Text style={{ color: 'white' }}>-</Text></TouchableOpacity>
+                    <TouchableOpacity style={{ marginLeft: 5 }} onPress={() => decreaseCount(cartItem)}><Text style={{ color: 'white' }}>-</Text></TouchableOpacity>
                   </View>
                 </View>
               </View>
