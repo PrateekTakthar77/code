@@ -13,6 +13,7 @@ export const reducer = (state = initialState, action = {}) => {
 
     switch (action.type) {
         case ADD_TO_CART:
+            console.log("item index", index);
             if (index > -1) {
                 const updatedCart = cart.map((cartItem, i) => {
                     if (i === index) {

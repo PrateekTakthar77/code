@@ -26,7 +26,7 @@ const Cart = () => {
       <ScrollView>
         {
           cart.length ? cart.map(cartItem => (
-            <View style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 30 }}>
+            <View key={cartItem.id} style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 30 }}>
               <View style={{ flexDirection: 'column' }}>
                 <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
                 <Text style={{ color: 'black', marginLeft: 7 }}></Text>
@@ -34,7 +34,7 @@ const Cart = () => {
                 <View style={{ flexDirection: 'row', width: 30, marginLeft: 5 }}>
                   <View style={{ flexDirection: 'row', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
                     <TouchableOpacity style={{ marginRight: 5 }} onPress={() => increaseCount(cartItem)}><Text style={{ color: 'white' }}>+</Text></TouchableOpacity>
-                    <Text style={{ color: 'white' }}>5</Text>
+                    <Text style={{ color: 'white' }}>{cartItem.count}</Text>
                     <TouchableOpacity style={{ marginLeft: 5 }} onPress={() => decreaseCount(cartItem)}><Text style={{ color: 'white' }}>-</Text></TouchableOpacity>
                   </View>
                 </View>
