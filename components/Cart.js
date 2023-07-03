@@ -22,7 +22,7 @@ const useGetCartTotal = (cartItems) => {
 
     const grandTotal = parseInt(total) + (((tax * total) * 2) / 100) - discount;
     setGrandTotal(grandTotal)
-  }, cartItems)
+  }, [cartItems])
 
   return {
     total,
