@@ -101,5 +101,5 @@ function calculateGrandTotal(total) {
     const tax = 1.5;
     const discount = 1000;
 
-    return parent(total) + parseInt((tax * 2) / 100) - parseInt(discount);
+    return parseInt(total) + parseInt((tax * 2) / 100) - parseInt(discount);
 }
