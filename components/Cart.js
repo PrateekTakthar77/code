@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity, TextInput, Button, ScrollView, StyleSheet, Modal } from "react-native";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from './redux/action';
 
@@ -20,7 +20,7 @@ const useGetCartTotal = (cartItems) => {
     const tax = 1.5;
     const discount = 1000;
 
-    grandTotal = parseInt(total) + (((tax * total) * 2) / 100) - discount;
+    const grandTotal = parseInt(total) + (((tax * total) * 2) / 100) - discount;
     setGrandTotal(grandTotal)
   }, cartItems)
 
