@@ -11,8 +11,8 @@ const useGetCartTotal = (cartItems) => {
   useEffect(() => {
     console.log('in');
     let total = 0;
-    cartItems.forEach((item) => {
-      total += parseInt(item.price);
+    cartItems.forEach((cartItem) => {
+      total += parseInt(cartItem.item.price);
     });
 
     setTotal(total);
