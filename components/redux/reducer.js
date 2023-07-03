@@ -26,10 +26,11 @@ export const reducer = (state = initialState, action = {}) => {
                 });
 
                 const total = calculateCartTotal(updatedCart, state.cartDetails.total);
+                const grandTotal = calculateGrandTotal(total);
 
                 return {
                     ...state,
-                    cartDetails: { ...state.cartDetails, total: total },
+                    cartDetails: { ...state.cartDetails, total, grandTotal },
                     cart: updatedCart,
                 };
             }
@@ -41,11 +42,12 @@ export const reducer = (state = initialState, action = {}) => {
             }];
 
             const newTotal = calculateCartTotal(newCart, state.cartDetails.total);
+            const newGrandTotal = calculateGrandTotal(total);
 
             return {
                 ...state,
                 cart: newCart,
-                cartDetails: { ...state.cartDetails, total: newTotal },
+                cartDetails: { ...state.cartDetails, total: newTotal, grandTotal: newGrandTotal },
             };
         case REMOVE_FROM_CART:
             if (index === -1) {
@@ -66,11 +68,12 @@ export const reducer = (state = initialState, action = {}) => {
             }).filter(Boolean);
 
             const total = calculateCartTotal(updatedCart, state.cartDetails.total);
+            const grandTotal = calculateGrandTotal(total);
 
             return {
                 ...state,
                 cart: newCart,
-                cartDetails: { ...state.cartDetails, total: total }
+                cartDetails: { ...state.cartDetails, total: total, grandTotal }
             };
         case SET_USER_DATA:
             return {
@@ -90,6 +93,13 @@ export const reducer = (state = initialState, action = {}) => {
 function calculateCartTotal(cartItems, initialTotal = 0) {
     return cartItems.reduce((acc, cartItem) => {
         console.log(acc, cartItem);
-        return acc + parseInt(cartItem.item.price) * parseInt(cartItem.item.count);
+        return acc + parseInt(cartItem.item.price) * parseInt(cartItem.count);
     }, initialTotal)
+}
+
+function calculateGrandTotal(total) {
+    const tax = 1.5;
+    const discount = 1000;
+
+    return total + parseInt((tax * 2) / 100) - discount;
 }
