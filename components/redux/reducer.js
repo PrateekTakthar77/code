@@ -42,7 +42,7 @@ export const reducer = (state = initialState, action = {}) => {
             }];
 
             const newTotal = calculateCartTotal(newCart, state.cartDetails.total);
-            const newGrandTotal = calculateGrandTotal(total);
+            const newGrandTotal = calculateGrandTotal(newTotal);
 
             return {
                 ...state,
@@ -72,7 +72,7 @@ export const reducer = (state = initialState, action = {}) => {
 
             return {
                 ...state,
-                cart: newCart,
+                cart: updatedCart,
                 cartDetails: { ...state.cartDetails, total: total, grandTotal }
             };
         case SET_USER_DATA:
@@ -101,5 +101,5 @@ function calculateGrandTotal(total) {
     const tax = 1.5;
     const discount = 1000;
 
-    return total + parseInt((tax * 2) / 100) - discount;
+    return parent(total) + parseInt((tax * 2) / 100) - parseInt(discount);
 }
