@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from './redux/action';
 
 const useGetCartTotal = (cartItems) => {
+  console.log(cartItems);
   const [total, setTotal] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
 
   useEffect(() => {
+    console.log('in');
     let total = 0;
     cartItems.forEach((item) => {
       total += parseInt(item.price);
@@ -46,6 +48,9 @@ const Cart = () => {
   }
 
   const { total, grandTotal } = useGetCartTotal(cart);
+
+  console.log('total', total);
+  console.log('grandTotal', grandTotal);
 
   return (
     <View>
