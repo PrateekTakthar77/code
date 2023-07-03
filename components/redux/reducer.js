@@ -89,6 +89,6 @@ export const reducer = (state = initialState, action = {}) => {
 
 function calculateCartTotal(cartItems, initialTotal) {
     return cartItems.reduce((acc, cartItem) => {
-        return acc + parseInt(cartItem.item.price);
+        return acc + parseInt(cartItem.item.price) * parseInt(cartItem.item.count);
     }, initialTotal)
 }
