@@ -3,37 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from './redux/action';
 
-const useGetCartTotal = (cartItems) => {
-  console.log(cartItems);
-  const [total, setTotal] = useState(0);
-  const [grandTotal, setGrandTotal] = useState(0);
-
-  useEffect(() => {
-    console.log('in');
-    let total = 0;
-    cartItems.forEach((cartItem) => {
-      total += parseInt(cartItem.item.price);
-    });
-
-    setTotal(total);
-
-    const tax = 1.5;
-    const discount = 1000;
-
-    const grandTotal = parseInt(total) + (((tax * total) * 2) / 100) - discount;
-    setGrandTotal(grandTotal)
-  }, [cartItems])
-
-  return {
-    total,
-    grandTotal
-  }
-}
-
 const Cart = () => {
   const [showModal, setShowModal] = useState(false);
-  const { cart } = useSelector((state) => state.reducer);
+  const { cart, cartDetails } = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
+  const { total, grandTotal } = cartDetails;
 
   const Navigator = () => {
     setShowModal(true);
@@ -47,11 +21,7 @@ const Cart = () => {
     dispatch(removeFromCart(item));
   }
 
-  const { total, grandTotal } = useGetCartTotal(cart);
-
-  console.log('total', total);
-  console.log('grandTotal', grandTotal);
-
+  console.log(cartDetails);
   return (
     <View>
       <ScrollView>

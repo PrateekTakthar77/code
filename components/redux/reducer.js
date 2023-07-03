@@ -1,6 +1,7 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, SET_USER_DATA, SET_ACTIVE_ITEM } from "./constants";
 
 const initialState = {
+    cartDetails: { total: 0, grandTotal: 0 },
     cart: [],
     users: [],
     activeItem: null
@@ -13,7 +14,6 @@ export const reducer = (state = initialState, action = {}) => {
 
     switch (action.type) {
         case ADD_TO_CART:
-            console.log("item index", index);
             if (index > -1) {
                 const updatedCart = cart.map((cartItem, i) => {
                     if (i === index) {
@@ -25,22 +25,27 @@ export const reducer = (state = initialState, action = {}) => {
                     return cartItem;
                 });
 
+                const total = calculateCartTotal(updatedCart, state.cartDetails.total);
+
                 return {
                     ...state,
+                    cartDetails: { ...state.cartDetails, total: total },
                     cart: updatedCart,
                 };
             }
 
+            const newCart = [...cart, {
+                id: data._id,
+                item: data,
+                count: 1
+            }];
+
+            const newTotal = calculateCartTotal(newCart, state.cartDetails.total);
+
             return {
                 ...state,
-                cart: [
-                    ...cart,
-                    {
-                        id: data._id,
-                        item: data,
-                        count: 1
-                    }
-                ],
+                cart: newCart,
+                cartDetails: { ...state.cartDetails, total: newTotal },
             };
         case REMOVE_FROM_CART:
             if (index === -1) {
@@ -60,9 +65,12 @@ export const reducer = (state = initialState, action = {}) => {
                 return cartItem;
             }).filter(Boolean);
 
+            const total = calculateCartTotal(updatedCart, state.cartDetails.total);
+
             return {
                 ...state,
-                cart: updatedCart
+                cart: newCart,
+                cartDetails: { ...state.cartDetails, total: total }
             };
         case SET_USER_DATA:
             return {
@@ -78,3 +86,9 @@ export const reducer = (state = initialState, action = {}) => {
             return state;
     }
 };
+
+function calculateCartTotal(cartItems, initialTotal) {
+    return cartItems.reduce((acc, cartItem) => {
+        return acc + parseInt(cartItem.item.price);
+    }, initialTotal)
+}
