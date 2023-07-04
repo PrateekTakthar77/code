@@ -1,7 +1,14 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from "react-native";
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from './redux/action';
+
+import { SliderBox } from "react-native-image-slider-box";
+const images = [
+    require('../images/Logo.png'),
+    require('../images/Logo.png'),
+    require('../images/Logo.png'),
+]
 
 const SingleProduct = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -15,8 +22,8 @@ const SingleProduct = ({ navigation }) => {
     return (
         <View>
             <ScrollView>
-                <View style={{ height: 250, width: 200, marginTop: 30 }}>
-                    {/* <SliderBox images={images} sliderBoxHeight={250} dotColor="#eec06b" inactiveDotColor="black" autoplay={false} autoplayInterval={1000} circleLoop={true} /> */}
+                <View style={{ height: 280, width: 200, marginTop: 30,justifyContent:'center' }}>
+                    <SliderBox images={images} sliderBoxHeight={300} dotColor="#eec06b" inactiveDotColor="black" autoplay={false} autoplayInterval={1000} circleLoop={true} />
                 </View>
                 <View style={{ marginTop: 50, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', backgroundColor: '#ECC440', padding: 20, marginRight: 20, marginLeft: 20, marginBottom: 20 }}>
                     <Text style={{ color: 'black' }}>Size-</Text>
