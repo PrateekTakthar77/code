@@ -45,7 +45,7 @@ const Cart = () => {
         }
         <View style={{ flexDirection: 'column', margin: 50 }}>
           <View style={{ marginBottom: 10 }}>
-            <Text>Item Total                                         {total}</Text>
+            <Text>Item Total                                         </Text>
           </View>
           <View style={{ marginBottom: 10 }}>
             <Text >CGST(1.5%) <Text>                                         435.00</Text></Text>

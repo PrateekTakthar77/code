@@ -16,7 +16,7 @@ const SingleProduct = ({ navigation }) => {
         <View>
             <ScrollView>
                 <View style={{ height: 250, width: 200, marginTop: 30 }}>
-                    {/* <SliderBox images={images} sliderBoxHeight={250} dotColor="#eec06b" inactiveDotColor="black" autoplay={false} autoplayInterval={1000} circleLoop={true} /> */}
+                    <SliderBox images={images} sliderBoxHeight={250} dotColor="#eec06b" inactiveDotColor="black" autoplay={false} autoplayInterval={1000} circleLoop={true} />
                 </View>
                 <View style={{ marginTop: 50, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', backgroundColor: '#ECC440', padding: 20, marginRight: 20, marginLeft: 20, marginBottom: 20 }}>
                     <Text style={{ color: 'black' }}>Size-</Text>

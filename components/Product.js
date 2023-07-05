@@ -9,7 +9,7 @@ const Product = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const getAPIDATA = async () => {
-    const url = "https://jwell-bliss-test-dev.cyclic.app/api/products/";
+    const url = "https://jwells-bliss-deploy2.up.railway.app/api/products";
     let result = await fetch(url);
     result = await result.json();
     setData(result);
@@ -49,10 +49,12 @@ const Product = ({ navigation }) => {
       {
         data.length ?
           data.map((item, index) =>
-              <View key={index}  style={{ margin: 30, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+              <View key={index}  style={{ margin: 30, flexDirection: 'column', justifyContent: 'space-evenly' }}>
                 <TouchableOpacity onPress={() => handlePress(item)} style={{ backgroundColor: 'black', borderRadius: 20, justifyContent: 'space-evenly', marginRight: 20 }}>
+                  <View style={{flexDirection:''}}>
                   <Image style={{ height: 200, width: 150, }} source={require('../images/Logo.png')} />
                   <Text style={{ marginBottom: .5, width: 150, color: 'white', backgroundColor: '#ECC440', borderRadius: 20, textAlign: 'center', }}>{item?.name}</Text>
+                  </View>
                 </TouchableOpacity>
               </View>
           ) : null
