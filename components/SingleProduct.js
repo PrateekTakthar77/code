@@ -1,7 +1,14 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from "react-native";
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from './redux/action';
+
+import { SliderBox } from "react-native-image-slider-box";
+const images = [
+    require('../images/Logo.png'),
+    require('../images/Logo.png'),
+    require('../images/Logo.png'),
+]
 
 const SingleProduct = ({ navigation }) => {
     const dispatch = useDispatch();

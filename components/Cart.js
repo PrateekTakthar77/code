@@ -28,12 +28,12 @@ const Cart = () => {
         {
           cart.length ? cart.map(cartItem => (
             <View key={cartItem.id} style={{ flexDirection: 'row', backgroundColor: '#eec06b', borderRadius: 10, width: '90%', alignItems: 'center', marginLeft: 20, marginTop: 30 }}>
-              <View style={{ flexDirection: 'column' }}>
+              <View style={{ flexDirection: 'row' }}>
                 <Image style={{ height: 130, width: 100, backgroundColor: 'black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../images/Logo.png')} />
-                <Text style={{ color: 'black', marginLeft: 7 }}></Text>
-                <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}></Text>
+                <Text style={{ color: 'black', marginLeft: 7 }}>{cartItem.item.name}</Text>
+                <Text style={{ color: 'black', marginBottom: 27, marginLeft: 7 }}>{cartItem.item.price}</Text>
                 <View style={{ flexDirection: 'row', width: 30, marginLeft: 5 }}>
-                  <View style={{ flexDirection: 'row', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
+                  <View style={{ justifyContent: '', backgroundColor: 'black', padding: 10, borderRadius: 5 }}>
                     <TouchableOpacity style={{ marginRight: 5 }} onPress={() => increaseCount(cartItem.item)}><Text style={{ color: 'white' }}>+</Text></TouchableOpacity>
                     <Text style={{ color: 'white' }}>{cartItem.count}</Text>
                     <TouchableOpacity style={{ marginLeft: 5 }} onPress={() => decreaseCount(cartItem.item)}><Text style={{ color: 'white' }}>-</Text></TouchableOpacity>
